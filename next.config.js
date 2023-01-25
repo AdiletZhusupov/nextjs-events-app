@@ -7,6 +7,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "hydeparkwinterwonderland.com",
+      },
+      {
+        protocol: "https",
+        hostname: "wembleypark.com",
+      },
     ],
   },
 };

@@ -1,18 +1,16 @@
 import Head from "next/head";
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
+import data from "../data/data.json";
+import { GetServerSideProps, GetStaticProps } from "next";
+import { IEventsCat } from "../types/types";
 import styles from "@/styles/Home.module.css";
-import data from '../data/data.json'
-import {GetServerSideProps} from 'next'
-import {IEventsCat} from "../types/types"
-
 
 interface HomeProps {
-  data: IEventsCat[] 
+  data: IEventsCat[];
 }
 
-
-export default function Home({data}: HomeProps) {
+export default function Home({ data }: HomeProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -32,11 +30,13 @@ export default function Home({data}: HomeProps) {
       </header>
 
       <main className={styles.main}>
-        {data.map(ev => <a key={ev.id} href={`/events/${ev.id}`}>
-          <Image src={ev.image} alt={ev.title} width={200} height={200}/>
-          <h2>{ev.title}</h2>
-          <p>{ev.description}</p>
-        </a>)}
+        {data.map((ev) => (
+          <Link key={ev.id} href={`/events/${ev.id}`}>
+            <Image src={ev.image} alt={ev.title} width={200} height={200} />
+            <h2>{ev.title}</h2>
+            <p>{ev.description}</p>
+          </Link>
+        ))}
       </main>
 
       <footer className={styles.footer}>Footer</footer>
@@ -44,8 +44,7 @@ export default function Home({data}: HomeProps) {
   );
 }
 
-
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       data: data.events_categories,

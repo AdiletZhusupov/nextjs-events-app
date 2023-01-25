@@ -18,7 +18,7 @@ const Events = ({data}: EventsProps) => {
           return (
             <Link key={ev.id} href={`events/${ev.id}`}>
               <Image src={ev.image} alt={ev.title} width={200} height={200} />
-              <h2>Events in {ev.title}</h2>
+              <h2>{ev.title}</h2>
             </Link>
           );
         })}
