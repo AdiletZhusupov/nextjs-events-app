@@ -7,12 +7,13 @@ import Image from 'next/image';
 
 interface CityEventsProps {
   data: ICityEvent[];
+  cityName: string;
 }
 
-const CityEvents = ({ data }: CityEventsProps) => {
+const CityEvents = ({ data, cityName }: CityEventsProps) => {
   return (
     <div>
-      <h2>Events</h2>
+      <h2>Events {cityName}</h2>
 
       <div>
         {data.map(ev=> {
@@ -40,6 +41,7 @@ export const getStaticProps: GetStaticProps = (context) => {
   return {
     props: {
       data: cityEvents,
+      cityName: cat
     },
   };
 };
